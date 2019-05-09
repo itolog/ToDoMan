@@ -1,4 +1,7 @@
 import React from "react";
+import { useScreens } from "react-native-screens";
+
+useScreens();
 
 import AppNavigator from "./src/navigation/MyDrawerNavigator";
 import { createDb } from "./src/utils/dbFunction";
