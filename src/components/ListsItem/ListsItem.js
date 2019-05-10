@@ -11,12 +11,11 @@ export default class ListsItem extends PureComponent {
       checkin: this.props.check.toLowerCase() == "1" ? true : false
     };
   }
-
   itemOnPres = async () => {
-    await updateItem(this.state.checkin, this.props.id, "lists", "flag");
-    this.setState((prevState) => ({
+    await this.setState((prevState) => ({
       checkin: !prevState.checkin
     }));
+    await updateItem(this.state.checkin, this.props.id, "lists", "flag");
   };
 
   render() {

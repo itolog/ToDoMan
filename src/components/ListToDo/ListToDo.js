@@ -12,12 +12,7 @@ import SQLite from "react-native-sqlite-storage";
 
 import AddTask from "../../components/AddTask/AddTask";
 import HeaderNav from "../../components/HeaderNav/HeaderNav";
-import {
-  addListsItem,
-  deleteAll,
-  getInfoTable,
-  updateChecked
-} from "../../utils/dbFunction";
+import { addListsItem, deleteAll } from "../../utils/dbFunction";
 import ListsItem from "../ListsItem/ListsItem";
 
 const db = SQLite.openDatabase("db.db");
@@ -59,11 +54,7 @@ export default class ListToDo extends PureComponent {
     await deleteAll("lists");
     await this.getListsitem();
   };
-  // ОБНОВЛЕНИЕ
-  updateListCheck = async (flag, id) => {
-    await updateChecked(flag, id);
-    await this.getListsitem();
-  };
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#294F6D" }}>

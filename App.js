@@ -25,9 +25,6 @@ export default class App extends React.Component {
   //   BackgroundJob.schedule(backgroundSchedule);
   // }
 
-  state = {
-    // fontLoaded: false
-  };
   async componentDidMount() {
     // Создание базы данных USER
     await createDb(

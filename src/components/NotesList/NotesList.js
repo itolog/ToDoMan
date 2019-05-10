@@ -38,9 +38,9 @@ class NotesList extends Component {
     await this.getNotes();
   }
   async componentDidUpdate() {
-    UIManager.setLayoutAnimationEnabledExperimental &&
-      UIManager.setLayoutAnimationEnabledExperimental(true);
-    LayoutAnimation.spring();
+    // UIManager.setLayoutAnimationEnabledExperimental &&
+    //   UIManager.setLayoutAnimationEnabledExperimental(true);
+    // LayoutAnimation.spring();
   }
 
   // ADD TASK
@@ -103,6 +103,7 @@ class NotesList extends Component {
         <FlatList
           data={this.state.listData}
           keyExtractor={(item) => item.id.toString()}
+          initialNumToRender={3}
           ListEmptyComponent={() => (
             <View style={styles.empty}>
               <Text style={styles.emptyText}>задач нету</Text>

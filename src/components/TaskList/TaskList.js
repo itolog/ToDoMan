@@ -39,9 +39,9 @@ class TaskList extends Component {
     await this.getTasks();
   }
   async componentDidUpdate() {
-    UIManager.setLayoutAnimationEnabledExperimental &&
-      UIManager.setLayoutAnimationEnabledExperimental(true);
-    LayoutAnimation.spring();
+    // UIManager.setLayoutAnimationEnabledExperimental &&
+    //   UIManager.setLayoutAnimationEnabledExperimental(true);
+    // LayoutAnimation.spring();
   }
 
   // ADD TASK
@@ -87,12 +87,13 @@ class TaskList extends Component {
   };
 
   render() {
+    const listViewData = this.state.listViewData;
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
         <HeaderNav openDrawer={() => this.props.navigation.openDrawer()} />
         <AddTask handleBtnPres={this.handleBtnPres} val="" />
-        {this.state.listViewData.length != 0 && (
+        {listViewData.length != 0 && (
           <View>
             <Text style={{ color: "white" }}>
               Всего задач: {this.state.listViewData.length}
@@ -105,9 +106,11 @@ class TaskList extends Component {
           updateItem={this.handleUpdateTask}
           textForUpdate={this.state.textForUpdate}
         />
+
         <FlatList
           data={this.state.listViewData}
           keyExtractor={(item) => item.id.toString()}
+          initialNumToRender={3}
           ListEmptyComponent={() => (
             <View style={styles.empty}>
               <Text style={styles.emptyText}>задач нету</Text>

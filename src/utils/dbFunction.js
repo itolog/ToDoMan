@@ -40,9 +40,11 @@ export const getInfoUser = async () => {
 export const getInfoTable = async (table) => {
   await db.transaction(
     (tx) => {
-      tx.executeSql(`select * from ${table}`, [], (_, { rows }) =>
-        console.log(`${table}`, JSON.stringify(rows))
-      );
+      tx.executeSql(`select * from ${table}`, [], (_, { rows }) => {
+        for (let i = 0; i < rows.length; ++i) {
+          console.log(rows.item(i));
+        }
+      });
     },
     (err) => {
       console.log(err);
